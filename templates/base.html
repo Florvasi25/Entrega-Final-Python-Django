@@ -5,26 +5,24 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block tab_title %}
-        <title>Base Template</title>
+        <title>Inicio</title>
         {% endblock tab_title %}       
         <link rel="stylesheet" href={% static 'css/style.css' %}>
     </head>
-    <body>
+    <body class="body">
         <nav class='nav'>
-            <div>
-                <h1>SOY EL NAV</h1>
+            <div class='nav_btns'>
                 <a href={% url 'inicio:inicio' %}>INICIO</a>
                 <a href={% url 'inicio:usuarios' %}>USUARIOS</a>
                 <a href={% url 'inicio:productos' %}>PRODUCTOS</a>
             </div>
         </nav>
-
-        {% block contenido %}
-        {% endblock contenido %}
-
+        <div>
+            {% block contenido %}
+            {% endblock contenido %}
+        </div>
         <footer class='footer'>
             <div>
-                <p>SOY EL FOOTER</p>
             </div>
         </footer>
     </body>

@@ -1,9 +1,16 @@
+
 .nav {
     background-color: yellow;
+    height: 50px;
 }
 
-.tituloinicio {
+.cont_inicio{
+    display: flex;
+    justify-content: center;
+    align-content: center;
     background-color: violet;
+    height: 100px;
+    width: 100vw;
 }
 
 .tituloprueba{
@@ -16,4 +23,18 @@
 
 .footer{
     background-color: yellow;
+    margin-top: auto;
+    height: 50px;
+}
+
+.body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.nav_btns{
+    display: flex;
+    justify-content: space-around;
 }

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block tab_title %}
-<title>Lista de Usuarios</title>
+<title>Búsqueda Usuarios</title>
 {% endblock tab_title %}
 
 {% block contenido %}
-    <h1>Listado de Usuarios</h1>
+    <h1>Buscar Usuario</h1>
     <form action="" method="get">
         {{formulario}}
         <button>Buscar</button>
@@ -15,6 +15,6 @@
             <li>Nombre: {{usuario.nombre}} - Edad: {{usuario.edad}} - Email: {{usuario.email}} - Teléfono: {{usuario.numero_telefono}}</li>
         {% endfor %}
     {% elif busqueda != "" %}
-        <p>No existe el usuario con nombre: "{{busqueda}}".</p>
+        <p>No se encontró el usuario con nombre: "{{busqueda}}".</p>
     {% endif %}
 {% endblock contenido %}
