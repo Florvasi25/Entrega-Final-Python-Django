@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
 
 {% block tab_title %}
-<title>Usuarios</title>
+<title>Lista de Usuarios</title>
 {% endblock tab_title %}
 
 {% block contenido %}
-    <h1>Listado Usuarios</h1>
-    <button><a href={% url 'inicio:crear_usuario' %}>CREAR USUARIO</a></button>
+    <h1>Listado de Usuarios</h1>
     <form action="" method="get">
         {{formulario}}
         <button>Buscar</button>
     </form>
-    {% if usuarios %}
-    {% for usuario in usuarios %}
-    <li>Nombre: {{usuario.nombre}} - Edad: {{usuario.edad}} - Email: {{usuario.email}} - Teléfono: {{usuario.numero_telefono}}</li>
-    {% endfor %}
+    {% if usuarios%}
+        {% for usuario in usuarios %}
+            <li>Nombre: {{usuario.nombre}} - Edad: {{usuario.edad}} - Email: {{usuario.email}} - Teléfono: {{usuario.numero_telefono}}</li>
+            {% endfor %}
+    {% elif busqueda == 'Matthew'%}
+        <p>Comamos fajitas :D</p>
     {% else %}
-    <p>no se encontró "{{busqueda}}" en los datos cargados.</p>
+    <p>No existe el usuario con nombre: "{{busqueda}}".</p>
     {% endif %}
 {% endblock contenido %}

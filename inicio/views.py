@@ -1,6 +1,3 @@
-from django.http import HttpResponse
-from django.template import Template, Context, loader
-from datetime import datetime
 from inicio.models import Usuario
 from django.shortcuts import render, redirect
 from inicio.form import CrearUsuarioFormulario, BuscarUsuarioFormulario
@@ -31,3 +28,6 @@ def listar_usuarios(request):
     
     formulario = BuscarUsuarioFormulario()
     return render(request, 'inicio/listar_usuarios.html', {'formulario': formulario, 'usuarios': listado_de_usuarios, 'busqueda': nombre_a_buscar})
+
+def usuarios(request):
+    return render(request, 'inicio/usuarios.html')

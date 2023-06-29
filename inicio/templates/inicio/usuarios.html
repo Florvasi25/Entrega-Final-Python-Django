@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block tab_title %}
+<title>Usuarios</title>
+{% endblock tab_title %}
+
+{% block contenido %}
+    <h1>Opciones</h1>
+    <button><a href={% url 'inicio:crear_usuario' %}>CREAR USUARIO</a></button>
+    <button><a href={% url 'inicio:listar_usuarios' %}>LISTAR USUARIOS</a></button>
+    
+{% endblock contenido %}
