@@ -8,3 +8,6 @@ class CrearUsuarioFormulario(forms.Form):
 
 class BuscarUsuarioFormulario(forms.Form):
     nombre = forms.CharField(max_length=20, required=False)
+
+class BuscarProductoFormulario(forms.Form):
+    nombre = forms.CharField(max_length=20, required=False)

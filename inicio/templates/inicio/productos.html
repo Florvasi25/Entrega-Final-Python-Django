@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block tab_title %}
+<title>Lista de Productos</title>
+{% endblock tab_title %}
+
+{% block contenido %}
+    <h1>Listado de Productos</h1>
+    <form action="" method="get">
+        {{formulario_productos}}
+        <button>Buscar</button>
+    </form>
+    {% if productos%}
+        {% for producto in productos %}
+            <li>Nombre: {{producto.nombre}} - Descripción: {{producto.descripcion}} - Precio: ${{producto.precio}}.</li>
+            {% endfor %}
+    {% else %}
+    <p>No pudimos encontrar el producto "{{busqueda_producto}}".</p>
+    {% endif %}
+    
+{% endblock contenido %}
