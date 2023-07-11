@@ -12,8 +12,13 @@
     </form>
     {% if usuarios%}
         {% for usuario in usuarios %}
-            <li>Nombre: {{usuario.nombre}} - Edad: {{usuario.edad}} - Email: {{usuario.email}} - Teléfono: {{usuario.numero_telefono}}</li>
-        {% endfor %}
+            {% comment %} <li>Nombre: {{usuario.nombre}} - Edad: {{usuario.edad}} - Email: {{usuario.email}} - Teléfono: {{usuario.numero_telefono}}</li> {% endcomment %}
+            <li>
+                {{usuario}}
+                <button><a href={% url 'inicio:eliminar_usuario' usuario.id %}>Eliminar</a></button>
+                <button><a href={% url 'inicio:modificar_usuario' usuario.id %}>Modificar</a></button>
+            </li>
+            {% endfor %}
     {% elif busqueda != "" %}
         <p>No se encontró el usuario con nombre: "{{busqueda}}".</p>
     {% endif %}

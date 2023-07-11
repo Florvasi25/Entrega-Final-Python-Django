@@ -8,11 +8,12 @@
         <h1 class="tituloperro">CREAR USUARIO</h1>
     </div>
     <div>
-        <form action="" method='POST'>
+        <form action={% url 'inicio:crear_usuario' %} method='POST'>
             {% csrf_token %}
             <table>
-                {{formulario}}
+                {{form}}
             </table>
+            
             <button>Crear</button>
         </form>
     </div>

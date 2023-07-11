@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block tab_title %}
+<title>Usuario</title>
+{% endblock tab_title %}
+
+{% block contenido %}
+    <div>
+        <h1 class="tituloperro">{{usuario.nombre}}</h1>
+    </div>
+    <div>
+        <li>Edad: {{usuario.edad}}</li>
+        <li>Email: {{usuario.email}}</li>
+        <li>Teléfono: {{usuario.numero_telefono}}</li>
+        <li>Descripción: {{usuario.descripcion}}</li>
+    </div>
+{% endblock contenido %}
+
