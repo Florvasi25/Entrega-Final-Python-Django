@@ -1,25 +1,33 @@
 {% extends 'base.html' %}
 
 {% block tab_title %}
-<title>Búsqueda Usuarios</title>
+<title>Usuarios</title>
 {% endblock tab_title %}
 
 {% block contenido %}
-    <h1>Buscar Usuario</h1>
+    <h1>Listado Usuarios</h1>
+    <button><a href={% url 'inicio:crear_usuario' %}>CREAR USUARIO</a></button>
     <form action="" method="get">
         {{formulario}}
         <button>Buscar</button>
     </form>
-    {% if usuarios%}
-        {% for usuario in usuarios %}
-            {% comment %} <li>Nombre: {{usuario.nombre}} - Edad: {{usuario.edad}} - Email: {{usuario.email}} - Teléfono: {{usuario.numero_telefono}}</li> {% endcomment %}
-            <li>
-                {{usuario}}
-                <button><a href={% url 'inicio:eliminar_usuario' usuario.id %}>Eliminar</a></button>
-                <button><a href={% url 'inicio:modificar_usuario' usuario.id %}>Modificar</a></button>
-            </li>
-            {% endfor %}
-    {% elif busqueda != "" %}
-        <p>No se encontró el usuario con nombre: "{{busqueda}}".</p>
+    {% if usuarios %}
+    {% for usuario in usuarios %}
+    <li>
+        {{usuario}}
+        <button>
+            <a href={% url 'inicio:mostrar_usuario' usuario.id %}>Ver más</a>
+        </button>
+        <button>
+            <a href={% url 'inicio:eliminar_usuario' usuario.id %}>Eliminar</a>
+        </button>
+        <button>
+            <a href={% url 'inicio:modificar_usuario' usuario.id %}>Modificar</a>
+        </button>
+    </li>
+    {% endfor %}
+    {% else %}
+    {% comment %} <p>No se encontró "{{busqueda}}" en los datos cargados.</p> {% endcomment %}
+    <p>No se encontraron datos cargados.</p>
     {% endif %}
 {% endblock contenido %}

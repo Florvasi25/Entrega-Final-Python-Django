@@ -8,10 +8,11 @@
         <h1 class="tituloperro">MODIFICAR USUARIO</h1>
     </div>
     <div>
-        <form action="" method='POST'>
+        <form action={% url 'inicio:modificar_usuario' usuario.id %} method='POST'>
             {% csrf_token %}
             <table>
-                {{formulario}}
+                {{form}}
+                {{form.media}}
             </table>
             <button>Modificar</button>
         </form>
