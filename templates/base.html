@@ -14,7 +14,25 @@
             <div class='nav_btns'>
                 <a href={% url 'inicio:inicio' %}>INICIO</a>
                 <a href={% url 'inicio:usuarios' %}>USUARIOS</a>
-                <a href={% url 'inicio:productos' %}>PRODUCTOS</a>
+                {% comment %} <a href={% url 'inicio:productos' %}>PRODUCTOS</a> {% endcomment %}
+                {% if  request.user.is_authenticated %}
+                    {% if  request.user.infoextra.avatar%}
+                        <img src={{request.user.infoextra.avatar.url}} alt="" height='40px'>
+                    {% endif %}
+                    <button>
+                        <a href={% url 'usuario:logout' %}>LOGOUT</a>
+                    </button>
+                    <button>
+                        <a href={% url 'usuario:editar_perfil' %}>{{request.user.username}}</a>
+                    </button>
+                {% else %}
+                    <button>
+                        <a href={% url 'usuario:login' %}>LOGIN</a>
+                    </button>
+                    <button>
+                        <a href={% url 'usuario:registrarse' %}>REGISTRARSE</a>
+                    </button>
+                {% endif %}
             </div>
         </nav>
         <div>

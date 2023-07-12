@@ -1,12 +1,14 @@
-from inicio.models import Usuario, Productos
+from typing import Any, Dict
+from django.db.models.query import QuerySet
+from inicio.models import Usuario
 from django.shortcuts import render, redirect
-from inicio.form import CrearUsuarioFormulario, BuscarUsuarioFormulario, BuscarProductoFormulario, ModificarUsuarioFormulario
+from inicio.form import CrearUsuarioFormulario, BuscarUsuarioFormulario, ModificarUsuarioFormulario
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
-# from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def inicio(request):
     return render(request, 'inicio/inicio.html')
@@ -38,14 +40,14 @@ def inicio(request):
 def usuarios(request):
     return render(request, 'inicio/usuarios.html')
 
-def productos(request):
-    formulario_productos = BuscarProductoFormulario(request.GET)
-    if formulario_productos.is_valid():
-        producto_a_buscar = formulario_productos.cleaned_data['nombre']
-    listado_de_productos = Productos.objects.filter(nombre__icontains=producto_a_buscar)
+# def productos(request):
+#     formulario_productos = BuscarProductoFormulario(request.GET)
+#     if formulario_productos.is_valid():
+#         producto_a_buscar = formulario_productos.cleaned_data['nombre']
+#     listado_de_productos = Productos.objects.filter(nombre__icontains=producto_a_buscar)
     
-    formulario_productos = BuscarProductoFormulario()
-    return render(request, 'inicio/productos.html', {'formulario_productos': formulario_productos, 'productos': listado_de_productos, 'busqueda_producto': producto_a_buscar})
+#     formulario_productos = BuscarProductoFormulario()
+#     return render(request, 'inicio/productos.html', {'formulario_productos': formulario_productos, 'productos': listado_de_productos, 'busqueda_producto': producto_a_buscar})
 
 # def eliminar_usuario(request, usuario_id):
 #     usuario = Usuario.objects.get(id=usuario_id)
@@ -85,13 +87,26 @@ class ListarUsuarios(ListView):
     template_name = 'inicio/CBV/listar_usuarios_CBV.html'
     context_object_name = 'usuarios'
 
-class ModificarUsuario(UpdateView):
+    def get_queryset(self):
+        listado_de_usuarios = []
+        formulario = BuscarUsuarioFormulario(self.request.GET)
+        if formulario.is_valid():
+            nombre_a_buscar = formulario.cleaned_data['nombre']
+            listado_de_usuarios = Usuario.objects.filter(nombre__icontains=nombre_a_buscar)
+        return listado_de_usuarios
+    
+    def get_context_data(self, **kwargs):
+        contexto = super().get_context_data(**kwargs)
+        contexto['formulario'] = BuscarUsuarioFormulario()
+        return contexto
+
+class ModificarUsuario(LoginRequiredMixin, UpdateView):
     model = Usuario
     template_name = 'inicio/CBV/modificar_usuario_CBV.html'
     fields = ['nombre', 'edad', 'email', 'numero_telefono', 'descripcion']
     success_url = reverse_lazy('inicio:listar_usuarios')
     
-class EliminarUsuario(DeleteView):
+class EliminarUsuario(LoginRequiredMixin, DeleteView):
     model = Usuario
     template_name = 'inicio/CBV/eliminar_usuario_CBV.html'
     success_url = reverse_lazy('inicio:listar_usuarios')

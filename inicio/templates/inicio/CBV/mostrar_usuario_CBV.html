@@ -11,7 +11,7 @@
         <li>Edad: {{usuario.edad}}</li>
         <li>Email: {{usuario.email}}</li>
         <li>Teléfono: {{usuario.numero_telefono}}</li>
-        <li>Descripción: {{usuario.descripcion}}</li>
+        <li>Descripción: {{usuario.descripcion | safe}}</li>
     </div>
 {% endblock contenido %}
 

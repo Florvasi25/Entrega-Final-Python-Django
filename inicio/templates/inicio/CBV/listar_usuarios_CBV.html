@@ -7,6 +7,10 @@
 {% block contenido %}
     <h1>Listado Usuarios</h1>
     <button><a href={% url 'inicio:crear_usuario' %}>CREAR USUARIO</a></button>
+    <form action="" method="get">
+        {{formulario}}
+        <button>Buscar</button>
+    </form>
     {% if usuarios %}
     {% for usuario in usuarios %}
     <li>

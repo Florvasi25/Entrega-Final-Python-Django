@@ -10,7 +10,7 @@ urlpatterns = [
     # path('usuarios/lista/', views.listar_usuarios, name='listar_usuarios'),
     # path('usuarios/eliminar/<int:usuario_id>/', views.eliminar_usuario, name='eliminar_usuario'),
     # path('usuarios/modificar/<int:usuario_id>/', views.modificar_usuario, name='modificar_usuario'),
-    path('productos/', views.productos, name='productos'),
+    # path('productos/', views.productos, name='productos'),
 
     #CBV
     path('usuarios/lista/', views.ListarUsuarios.as_view(), name='listar_usuarios'),

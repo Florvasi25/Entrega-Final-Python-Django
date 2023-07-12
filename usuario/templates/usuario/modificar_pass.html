@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
+
 {% block tab_title %}
-<title>Modificar Usuario</title>
+<title>Modificar Pass</title>
 {% endblock tab_title %}
 
 {% block contenido %}
     <div>
-        <h1 class="tituloperro">MODIFICAR USUARIO</h1>
+        <h1 class="tituloperro">Modificar Pass</h1>
     </div>
     <div>
-        <form action={% url 'inicio:modificar_usuario' usuario.id %} method='POST'>
+        <form action={% url 'usuario:modificar_pass' %} method='POST'>
             {% csrf_token %}
             <table>
                 {{form}}
-                {{form.media}}
             </table>
             <button>Modificar</button>
         </form>
