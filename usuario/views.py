@@ -56,11 +56,17 @@ def edicion_perfil(request):
             if avatar:
                 info_extra_user.avatar = avatar
                 info_extra_user.save()
+            email = formulario.cleaned_data.get('email')
+            if email:
+                info_extra_user.email = email
+                info_extra_user.save()
+
 
             formulario.save()
             return redirect('inicio:inicio')
     else:
-        formulario = MiFormularioDeEdicionDeDatosDeUsuario(initial={'avatar': info_extra_user.avatar}, instance=request.user)
+        # formulario = MiFormularioDeEdicionDeDatosDeUsuario(initial={'avatar': info_extra_user.avatar}, instance=request.user)
+        formulario = MiFormularioDeEdicionDeDatosDeUsuario(initial={'avatar': info_extra_user.avatar, 'email': info_extra_user.email}, instance=request.user)
 
     return render(request, 'usuario/edicion_perfil.html', {'formulario': formulario})
 

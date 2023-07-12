@@ -21,4 +21,4 @@ class MiFormularioDeEdicionDeDatosDeUsuario(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ['email', 'first_name', 'last_name', 'avatar']
+        fields = ['first_name', 'email', 'last_name', 'avatar']

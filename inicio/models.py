@@ -11,5 +11,5 @@ class Usuario(models.Model):
 
 
     def __str__(self):
-        return f'Nombre: {self.nombre} --- E-mail: {self.email}'
+        return f'Nombre: {self.nombre}'
 
