@@ -12,7 +12,7 @@
         <li>Email: {{usuario.email}}</li>
         <li>Teléfono: {{usuario.numero_telefono}}</li>
         <li>Descripción: {{usuario.descripcion | safe}}</li>
-        <li>Autor: {{request.user.infoextra.email}}</li>
+        <li>Autor: {{usuario.autor}}</li>
     </div>
 {% endblock contenido %}
 

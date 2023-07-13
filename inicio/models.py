@@ -8,6 +8,7 @@ class Usuario(models.Model):
     email = models.CharField(max_length=50) 
     numero_telefono = models.IntegerField()
     descripcion = RichTextField(null=True, blank=True)
+    autor = models.EmailField()
 
 
     def __str__(self):

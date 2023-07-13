@@ -61,7 +61,6 @@ def edicion_perfil(request):
                 info_extra_user.email = email
                 info_extra_user.save()
 
-
             formulario.save()
             return redirect('inicio:inicio')
     else:

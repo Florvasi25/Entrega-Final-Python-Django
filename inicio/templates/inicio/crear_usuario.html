@@ -11,8 +11,7 @@
         <form action={% url 'inicio:crear_usuario' %} method='POST'>
             {% csrf_token %}
             <table>
-                {{form}}
-                {{form.media}}
+                {{formulario}}
             </table>
             
             <button>Crear</button>

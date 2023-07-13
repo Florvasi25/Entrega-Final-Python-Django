@@ -12,22 +12,23 @@
         <button>Buscar</button>
     </form>
     {% if usuarios %}
-    {% for usuario in usuarios %}
-    <li>
-        {{usuario}}
-        <button>
-            <a href={% url 'inicio:mostrar_usuario' usuario.id %}>Ver más</a>
-        </button>
-        <button>
-            <a href={% url 'inicio:eliminar_usuario' usuario.id %}>Eliminar</a>
-        </button>
-        <button>
-            <a href={% url 'inicio:modificar_usuario' usuario.id %}>Modificar</a>
-        </button>
-    </li>
-    {% endfor %}
+        {% for usuario in usuarios %}
+            <li>
+                {{usuario}}
+                <button>
+                    <a href={% url 'inicio:mostrar_usuario' usuario.id %}>Ver más</a>
+                </button>
+                <button>
+                    <a href={% url 'inicio:eliminar_usuario' usuario.id %}>Eliminar</a>
+                </button>
+                <button>
+                    <a href={% url 'inicio:modificar_usuario' usuario.id %}>Modificar</a>
+                </button>
+            </li>
+        {% endfor %}
+    {% elif usuarios|length == 0 and busqueda == "" %}
+    <p>No hay usuarios creados</p>
     {% else %}
     <p>No se encontró "{{busqueda}}" en los datos cargados.</p>
-    <p>No se encontraron datos cargados.</p>
     {% endif %}
 {% endblock contenido %}
