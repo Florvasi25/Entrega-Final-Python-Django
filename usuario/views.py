@@ -63,7 +63,7 @@ def edicion_perfil(request):
                 info_extra_user.save()
 
             formulario.save()
-            return redirect('inicio:inicio')
+            return redirect('usuario:mostrar_perfil')
     else:
         formulario = MiFormularioDeEdicionDeDatosDeUsuario(initial={'avatar': info_extra_user.avatar, 'email': info_extra_user.email}, instance=request.user)
 

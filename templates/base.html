@@ -23,7 +23,7 @@
                         <a href={% url 'usuario:logout' %}>LOGOUT</a>
                     </button>
                     <div>
-                        <p>Hola <a href={% url 'usuario:mostrar_perfil' %}>{{request.user.username}}</a>!</p>
+                        <p>¡Hola, <a href={% url 'usuario:mostrar_perfil' %}>{{request.user.username}}</a>!</p>
                     </div>
                 {% else %}
                     <button>

@@ -10,7 +10,7 @@
     <div>
         <img src={{producto.imagen.url}} alt="" height='100px'>
         <li>Modelo: {{producto.modelo}}</li>
-        <li>Precio: {{producto.precio}}</li>
+        <li>Precio: ${{producto.precio}}</li>
         <li>Número de Contacto: {{producto.numero_telefono}}</li>
         {% if producto.descripcion %}
             <li>Descripción: {{producto.descripcion | safe}}</li>

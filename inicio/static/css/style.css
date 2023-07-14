@@ -13,10 +13,6 @@
     width: 100vw;
 }
 
-.tituloprueba{
-    background-color: pink;
-}
-
 .tituloperro{
     background-color: blueviolet;
 }
@@ -37,4 +33,19 @@
 .nav_btns{
     display: flex;
     justify-content: space-around;
+}
+
+.cajas {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cajas_productos {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    border: solid 1px;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
 }
