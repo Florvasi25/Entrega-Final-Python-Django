@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from usuario.form import MiFormularioCambioContrasenia, MiFormularioDeCreacionDeUsuario, MiFormularioDeEdicionDeDatosDeUsuario, MiFormularioLogin
 from django.urls import reverse_lazy
-from usuario.models import InfoExtra, User
-
+from usuario.models import InfoExtra
 
 # Create your views here.
 
@@ -57,15 +55,15 @@ def edicion_perfil(request):
             if avatar:
                 info_extra_user.avatar = avatar
                 info_extra_user.save()
-            email = formulario.cleaned_data.get('email')
-            if email:
-                info_extra_user.email = email
+            red_social = formulario.cleaned_data.get('red_social')
+            if red_social:
+                info_extra_user.red_social = red_social
                 info_extra_user.save()
 
             formulario.save()
             return redirect('usuario:mostrar_perfil')
     else:
-        formulario = MiFormularioDeEdicionDeDatosDeUsuario(initial={'avatar': info_extra_user.avatar, 'email': info_extra_user.email}, instance=request.user)
+        formulario = MiFormularioDeEdicionDeDatosDeUsuario(initial={'avatar': info_extra_user.avatar, 'red_social': info_extra_user.red_social}, instance=request.user)
 
     return render(request, 'usuario/edicion_perfil.html', {'formulario': formulario})
 

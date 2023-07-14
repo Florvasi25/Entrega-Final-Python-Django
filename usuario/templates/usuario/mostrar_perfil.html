@@ -17,8 +17,13 @@
         {% if  user.last_name%}
             <li>Apellido: {{user.last_name}}</li>
         {% endif %}
-        <li>Email: {{user.email}}</li>
+        {% if  user.email%}
+            <li>Email: {{user.email}}</li>
+        {% endif %}
         <li>Usuario desde: {{user.date_joined|date:'d/m/Y'}}</li>
+        {% if request.user.infoextra.red_social %}
+            <li>Red Social: {{request.user.infoextra.red_social}}</li>
+        {% endif %}
     </div>
     <div>
         <button><a href={% url 'usuario:editar_perfil' %}>MODIFICAR PERFIL</a></button>

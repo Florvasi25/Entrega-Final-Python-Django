@@ -16,11 +16,12 @@ class MiFormularioDeEdicionDeDatosDeUsuario(UserChangeForm):
     password = None
     first_name = forms.CharField(label='Nombre', max_length=20, required=False)
     last_name = forms.CharField(label='Apellido', max_length=20, required=False)
+    red_social = forms.CharField(label='Red Social')
     avatar = forms.ImageField(required=False)
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'avatar']
+        fields = ['first_name', 'last_name', 'avatar', 'red_social']
 
 class MiFormularioCambioContrasenia(PasswordChangeForm):
     old_password = forms.CharField(label='Contraseña Anterior', widget=forms.PasswordInput)
@@ -36,4 +37,4 @@ class MiFormularioLogin(AuthenticationForm):
     username = forms.CharField(label='Usuario')
     password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
 
-    
+
