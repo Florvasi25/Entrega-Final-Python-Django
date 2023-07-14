@@ -12,7 +12,7 @@ def crear_mensaje(request):
             info = formulario.cleaned_data
             mensaje = Mensaje(
                 texto=info['texto'],
-                autor=request.user.email,
+                autor=request.user.username,
                 destinatario=info['destinatario'],
                 fecha_creacion=date.today()
             )
