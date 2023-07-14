@@ -18,6 +18,8 @@
                 {% if  request.user.is_authenticated %}
                     {% if  request.user.infoextra.avatar%}
                         <img src={{request.user.infoextra.avatar.url}} alt="" height='40px'>
+                    {% else %}
+                        <img src={% static 'assets/no_profile_pic.png' %} alt="" height='40px'>
                     {% endif %}
                     <button>
                         <a href={% url 'usuario:logout' %}>LOGOUT</a>
