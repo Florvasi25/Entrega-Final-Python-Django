@@ -15,7 +15,7 @@
         {% if producto.descripcion %}
             <li>Descripción: {{producto.descripcion | safe}}</li>
         {% endif %}
-        <li>Publicado el día: {{producto.fecha_creacion}}</li>
+        <li>Publicado el día: {{producto.fecha_creacion|date:'d/m/Y'}}</li>
         <li>Vendedor: {{producto.autor}}</li>
     </div>
 {% endblock contenido %}

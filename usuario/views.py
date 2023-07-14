@@ -4,17 +4,17 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.detail import DetailView
-from usuario.form import MiFormularioDeCreacionDeUsuario, MiFormularioDeEdicionDeDatosDeUsuario
+from usuario.form import MiFormularioCambioContrasenia, MiFormularioDeCreacionDeUsuario, MiFormularioDeEdicionDeDatosDeUsuario, MiFormularioLogin
 from django.urls import reverse_lazy
-from usuario.models import InfoExtra
+from usuario.models import InfoExtra, User
+
 
 # Create your views here.
 
 def login(request):
 
     if request.method == 'POST':
-        formulario = AuthenticationForm(request, data=request.POST)
+        formulario = MiFormularioLogin(request, data=request.POST)
         if formulario.is_valid():
             usuario = formulario.cleaned_data['username']
             contrasenia = formulario.cleaned_data['password']
@@ -29,7 +29,7 @@ def login(request):
         else:
             return render(request, 'usuario/login.html', {'formulario': formulario})
     
-    formulario = AuthenticationForm()
+    formulario = MiFormularioLogin()
     return render(request, 'usuario/login.html', {'formulario': formulario})
 
 def registrarse(request):
@@ -71,7 +71,8 @@ def edicion_perfil(request):
 
 class ModificarPass(LoginRequiredMixin, PasswordChangeView):   
     template_name = 'usuario/modificar_pass.html'
-    success_url = reverse_lazy('usuario/editar_perfil')
+    success_url = reverse_lazy('usuario:editar_perfil')
+    form_class = MiFormularioCambioContrasenia
 
 @login_required
 def mostrar_perfil(request):

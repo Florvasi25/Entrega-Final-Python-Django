@@ -18,7 +18,7 @@
             <li>Apellido: {{user.last_name}}</li>
         {% endif %}
         <li>Email: {{user.email}}</li>
-        <li>Usuario desde: {{user.date_joined}}</li>
+        <li>Usuario desde: {{user.date_joined|date:'d/m/Y'}}</li>
     </div>
     <div>
         <button><a href={% url 'usuario:editar_perfil' %}>MODIFICAR PERFIL</a></button>
