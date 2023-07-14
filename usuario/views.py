@@ -65,7 +65,6 @@ def edicion_perfil(request):
             formulario.save()
             return redirect('inicio:inicio')
     else:
-        # formulario = MiFormularioDeEdicionDeDatosDeUsuario(initial={'avatar': info_extra_user.avatar}, instance=request.user)
         formulario = MiFormularioDeEdicionDeDatosDeUsuario(initial={'avatar': info_extra_user.avatar, 'email': info_extra_user.email}, instance=request.user)
 
     return render(request, 'usuario/edicion_perfil.html', {'formulario': formulario})

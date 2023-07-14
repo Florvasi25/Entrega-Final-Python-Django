@@ -10,6 +10,7 @@ class Producto(models.Model):
     descripcion = RichTextField(null=True, blank=True)
     autor = models.EmailField()
     imagen = models.ImageField(upload_to='productos', null=True, blank=True)
+    fecha_creacion = models.DateField()
 
 
     def __str__(self):

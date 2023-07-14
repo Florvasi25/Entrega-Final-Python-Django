@@ -14,11 +14,10 @@ class MiFormularioDeCreacionDeUsuario(UserCreationForm):
 
 class MiFormularioDeEdicionDeDatosDeUsuario(UserChangeForm):
     password = None
-    email = forms.EmailField()
     first_name = forms.CharField(label='Nombre', max_length=20)
     last_name = forms.CharField(label='Apellido', max_length=20)
     avatar = forms.ImageField(required=False)
 
     class Meta:
         model = User
-        fields = ['first_name', 'email', 'last_name', 'avatar']
+        fields = ['first_name', 'last_name', 'avatar']

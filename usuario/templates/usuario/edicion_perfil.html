@@ -14,7 +14,7 @@
             <table>
                 {{formulario}}
             </table>
-            <button>Guardar</button>
+            <button type='button'><a href={% url 'usuario:mostrar_perfil' %}>Guardar</a></button>
             <button type='button'><a href={% url 'usuario:modificar_pass' %}>Cambiar Contraseña</a></button>
         </form>
     </div>

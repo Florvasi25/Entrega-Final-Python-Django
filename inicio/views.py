@@ -7,6 +7,7 @@ from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import date
 
 def inicio(request):
     return render(request, 'inicio/inicio.html')
@@ -30,7 +31,8 @@ def crear_producto(request):
                 precio=info['precio'],
                 numero_telefono=info['numero_telefono'],
                 autor=request.user.email,
-                imagen=info['imagen']
+                imagen=info['imagen'],
+                fecha_creacion=date.today()
             )
             producto.save()
             return redirect('inicio:listar_productos')
