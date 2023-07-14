@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block tab_title %}
+<title>Crear Mensaje</title>
+{% endblock tab_title %}
+
+{% block contenido %}
+    <div>
+        <h1 class="tituloh1">CREAR MENSAJE</h1>
+    </div>
+    <div>
+        {% comment %} <form action={% url 'inicio:crear_mensaje' %} method='POST' enctype="multipart/form-data"> {% endcomment %}
+        <form action={% url 'mensajeria:crear_mensaje' %} method='POST'>
+            {% csrf_token %}
+            <table>
+                {{formulario}}
+            </table>
+            
+            <button>Crear</button>
+        </form>
+        <button><a href={% url 'mensajeria:listar_mensajes' %}></a>LISTA MENSAJES</button>
+    </div>
+{% endblock contenido %}
+

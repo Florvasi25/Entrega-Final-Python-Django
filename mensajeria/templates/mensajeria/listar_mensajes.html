@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block tab_title %}
+<title>Mensajes</title>
+{% endblock tab_title %}
+
+{% block contenido %}
+    <h1>Listado Mensajes</h1>
+    {% if  request.user.is_authenticated%}
+        <button><a href={% url 'mensajeria:crear_mensaje' %}>CREAR MENSAJE</a></button>
+    {% endif %}
+    <form action="" method="get">
+        {{formulario}}
+        <button>Buscar</button>
+    </form>
+    {% if mensajes %}
+    <div class="cajas">
+        {% for mensaje in mensajes %}
+            <div class="cajas_mensajes">
+                <div>
+                    <li>{{mensaje.texto}}</li>
+                    <li>{{mensaje.autor}}</li>
+                    <li>{{mensaje.destinatario}}</li>
+                    <li>{{mensaje.fecha_creacion}}</li>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% elif mensajes|length == 0 and busqueda == "" %}
+    <p>No hay mensajes creados</p>
+    {% else %}
+    <p>No se encontró "{{busqueda}}" en los datos cargados.</p>
+    {% endif %}
+{% endblock contenido %}
