@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block tab_title %}
-<title>Crear Usuario</title>
+<title>Crear Producto</title>
 {% endblock tab_title %}
 
 {% block contenido %}
     <div>
-        <h1 class="tituloperro">CREAR USUARIO</h1>
+        <h1 class="tituloperro">CREAR PRODUCTO</h1>
     </div>
     <div>
-        <form action={% url 'inicio:crear_usuario' %} method='POST'>
+        <form action={% url 'inicio:crear_producto' %} method='POST' enctype="multipart/form-data">
             {% csrf_token %}
             <table>
                 {{formulario}}

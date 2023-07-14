@@ -1,6 +1,6 @@
-from inicio.models import Usuario
+from inicio.models import Producto
 from django.shortcuts import render, redirect
-from inicio.form import BuscarUsuarioFormulario, CrearUsuarioFormulario
+from inicio.form import BuscarProductoFormulario, CrearProductoFormulario
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -11,50 +11,58 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def inicio(request):
     return render(request, 'inicio/inicio.html')
 
-def usuarios(request):
-    return render(request, 'inicio/usuarios.html')
+def productos(request):
+    return render(request, 'inicio/productos.html')
 
 def acerca_de(request):
     return render(request, 'inicio/acerca_de.html')
 
-def crear_usuario(request):
+@login_required
+def crear_producto(request):
 
     if request.method == 'POST':
-        formulario = CrearUsuarioFormulario(request.POST)
+        formulario = CrearProductoFormulario(request.POST, request.FILES)
         if formulario.is_valid():
             info = formulario.cleaned_data
-            usuario = Usuario(nombre=info['nombre'], edad=info['edad'], email=info['email'], numero_telefono=info['numero_telefono'], autor=request.user.email)
-            usuario.save()
-            return redirect('inicio:listar_usuarios')
+            producto = Producto(
+                nombre=info['nombre'],
+                modelo=info['modelo'],
+                precio=info['precio'],
+                numero_telefono=info['numero_telefono'],
+                autor=request.user.email,
+                imagen=info['imagen']
+            )
+            producto.save()
+            return redirect('inicio:listar_productos')
         else:
-            return render(request, 'inicio/crear_usuario.html', {'formulario': formulario})
+            return render(request, 'inicio/crear_producto.html', {'formulario': formulario})
 
-    formulario = CrearUsuarioFormulario()
-    return render(request, 'inicio/crear_usuario.html', {'formulario': formulario})
+    formulario = CrearProductoFormulario()
+    return render(request, 'inicio/crear_producto.html', {'formulario': formulario})
 
-def listar_usuarios(request):
-    formulario = BuscarUsuarioFormulario(request.GET)
-    listado_de_usuarios = ""
+def listar_productos(request):
+    formulario = BuscarProductoFormulario(request.GET)
+    listado_de_productos = ""
     if formulario.is_valid():
         nombre_a_buscar = formulario.cleaned_data['nombre']
-    listado_de_usuarios = Usuario.objects.filter(nombre__icontains=nombre_a_buscar)
+    listado_de_productos = Producto.objects.filter(nombre__icontains=nombre_a_buscar)
     
-    formulario = BuscarUsuarioFormulario()
-    return render(request, 'inicio/listar_usuarios.html', {'formulario': formulario, 'usuarios': listado_de_usuarios, 'busqueda': nombre_a_buscar})
+    formulario = BuscarProductoFormulario()
+    return render(request, 'inicio/listar_productos.html', {'formulario': formulario, 'productos': listado_de_productos, 'busqueda': nombre_a_buscar})
 
 
-class ModificarUsuario(LoginRequiredMixin, UpdateView):
-    model = Usuario
-    template_name = 'inicio/modificar_usuario.html'
-    fields = ['nombre', 'edad', 'email', 'numero_telefono', 'descripcion']
-    success_url = reverse_lazy('inicio:listar_usuarios')
+class ModificarProducto(LoginRequiredMixin, UpdateView):
+    model = Producto
+    template_name = 'inicio/modificar_producto.html'
+    fields = ['nombre', 'modelo', 'precio', 'numero_telefono', 'imagen', 'descripcion']
+    success_url = reverse_lazy('inicio:listar_productos')
     
-class EliminarUsuario(LoginRequiredMixin, DeleteView):
-    model = Usuario
-    template_name = 'inicio/eliminar_usuario.html'
-    success_url = reverse_lazy('inicio:listar_usuarios')
+class EliminarProducto(LoginRequiredMixin, DeleteView):
+    model = Producto
+    template_name = 'inicio/eliminar_producto.html'
+    success_url = reverse_lazy('inicio:listar_productos')
 
-class MostrarUsuario(DetailView):
-    model = Usuario
-    template_name = 'inicio/mostrar_usuario.html'
+class MostrarProducto(DetailView):
+    model = Producto
+    template_name = 'inicio/mostrar_producto.html'
 

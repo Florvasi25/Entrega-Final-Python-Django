@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block tab_title %}
+<title>Producto</title>
+{% endblock tab_title %}
+
+{% block contenido %}
+    <div>
+        <h1 class="tituloperro">{{producto.nombre}}</h1>
+    </div>
+    <div>
+        <img src={{producto.imagen.url}} alt="" height='100px'>
+        <li>Modelo: {{producto.modelo}}</li>
+        <li>Precio: {{producto.precio}}</li>
+        <li>Número de Contacto: {{producto.numero_telefono}}</li>
+        {% if producto.descripcion %}
+            <li>Descripción: {{producto.descripcion | safe}}</li>
+        {% endif %}
+        <li>Publicado el día:</li>
+        <li>Vendedor: {{producto.autor}}</li>
+    </div>
+{% endblock contenido %}
+

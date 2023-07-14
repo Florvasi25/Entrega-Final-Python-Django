@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block tab_title %}
+<title>Usuario</title>
+{% endblock tab_title %}
+
+{% block contenido %}
+    <div>
+        <h1 class="tituloperro">{{user.username}}</h1>
+    </div>
+    <div>
+        <img src={{request.user.infoextra.avatar.url}} alt="" height='40px'>
+        <li>Nombre: {{user.first_name}}</li>
+        <li>Apellido: {{user.last_name}}</li>
+        <li>Email: {{user.email}}</li>
+        <li>Usuario desde: {{user.date_joined}}</li>
+    </div>
+    <div>
+        <button><a href={% url 'usuario:editar_perfil' %}>MODIFICAR PERFIL</a></button>
+        <button><a href={% url 'inicio:crear_producto' %}>CREAR PUBLICACIÓN</a></button>
+    </div>
+{% endblock contenido %}
+

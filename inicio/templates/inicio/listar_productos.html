@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block tab_title %}
+<title>Productos</title>
+{% endblock tab_title %}
+
+{% block contenido %}
+    <h1>Listado Productos</h1>
+    <button><a href={% url 'inicio:crear_producto' %}>CREAR PRODUCTO</a></button>
+    <form action="" method="get">
+        {{formulario}}
+        <button>Buscar</button>
+    </form>
+    {% if productos %}
+        {% for producto in productos %}
+            <li>
+                {{producto}}
+                <button>
+                    <a href={% url 'inicio:mostrar_producto' producto.id %}>Ver más</a>
+                </button>
+                <button>
+                    <a href={% url 'inicio:eliminar_producto' producto.id %}>Eliminar</a>
+                </button>
+                <button>
+                    <a href={% url 'inicio:modificar_producto' producto.id %}>Modificar</a>
+                </button>
+            </li>
+        {% endfor %}
+    {% elif productos|length == 0 and busqueda == "" %}
+    <p>No hay productos creados</p>
+    {% else %}
+    <p>No se encontró "{{busqueda}}" en los datos cargados.</p>
+    {% endif %}
+{% endblock contenido %}

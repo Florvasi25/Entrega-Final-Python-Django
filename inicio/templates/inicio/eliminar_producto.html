@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block tab_title %}
-<title>Eliminar Usuario</title>
+<title>Eliminar Producto</title>
 {% endblock tab_title %}
 
 {% block contenido %}
     <div>
-        <h1 class="tituloperro">ELIMINAR USUARIO</h1>
+        <h1 class="tituloperro">ELIMINAR PRODUCTO</h1>
     </div>
     <div>
-        <form action={% url 'inicio:eliminar_usuario' usuario.id %} method='POST'>
+        <form action={% url 'inicio:eliminar_producto' producto.id %} method='POST'>
             {% csrf_token %}
-            <p>Quiere eliminar {{usuario}}?</p>
+            <p>Quiere eliminar {{producto}}?</p>
             
             <button>Confirmar</button>
         </form>

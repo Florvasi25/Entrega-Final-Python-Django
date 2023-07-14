@@ -13,7 +13,7 @@
         <nav class='nav'>
             <div class='nav_btns'>
                 <a href={% url 'inicio:inicio' %}>INICIO</a>
-                <a href={% url 'inicio:usuarios' %}>USUARIOS</a>
+                <a href={% url 'inicio:listar_productos' %}>CATÁLOGO</a>
                 <a href={% url 'inicio:acerca_de' %}>SOBRE MÍ</a>
                 {% if  request.user.is_authenticated %}
                     {% if  request.user.infoextra.avatar%}
@@ -22,9 +22,9 @@
                     <button>
                         <a href={% url 'usuario:logout' %}>LOGOUT</a>
                     </button>
-                    <button>
-                        <a href={% url 'usuario:editar_perfil' %}>{{request.user.username}}</a>
-                    </button>
+                    <div>
+                        <p>Hola <a href={% url 'usuario:mostrar_perfil' %}>{{request.user.username}}</a>!</p>
+                    </div>
                 {% else %}
                     <button>
                         <a href={% url 'usuario:login' %}>LOGIN</a>

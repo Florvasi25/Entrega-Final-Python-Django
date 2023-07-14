@@ -2,13 +2,14 @@ from django.db import models
 from ckeditor.fields import RichTextField
 
 # Create your models here.
-class Usuario(models.Model):
+class Producto(models.Model):
     nombre = models.CharField(max_length=20) 
-    edad = models.IntegerField()
-    email = models.CharField(max_length=50) 
+    modelo = models.CharField(max_length=20) 
+    precio = models.IntegerField()
     numero_telefono = models.IntegerField()
     descripcion = RichTextField(null=True, blank=True)
     autor = models.EmailField()
+    imagen = models.ImageField(upload_to='productos', null=True, blank=True)
 
 
     def __str__(self):

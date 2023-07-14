@@ -5,10 +5,10 @@
 
 {% block contenido %}
     <div>
-        <h1 class="tituloperro">MODIFICAR USUARIO</h1>
+        <h1 class="tituloperro">MODIFICAR PRODUCTO</h1>
     </div>
     <div>
-        <form action={% url 'inicio:modificar_usuario' usuario.id %} method='POST'>
+        <form action={% url 'inicio:modificar_producto' producto.id %} method='POST'>
             {% csrf_token %}
             <table>
                 {{form}}
