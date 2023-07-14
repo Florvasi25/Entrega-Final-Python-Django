@@ -1,8 +1,7 @@
 from inicio.models import Producto
 from django.shortcuts import render, redirect
 from inicio.form import BuscarProductoFormulario, CrearProductoFormulario
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.list import ListView
+from django.views.generic.edit import UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required

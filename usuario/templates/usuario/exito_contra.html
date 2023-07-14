@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block tab_title %}
+<title>Logout</title>
+{% endblock tab_title %}
+
+{% block contenido %}
+    <div>
+        <h1 class="tituloh1">Tu contraseña se cambió con éxito! :D</h1>
+        <div>
+            <button><a href={% url 'usuario:editar_perfil' %}>VOLVER A MODIFICAR PERFIL</a></button>
+            <button><a href={% url 'inicio:inicio' %}>VOLVER AL INICIO</a></button>
+        </div>
+    </div>
+{% endblock contenido %}
