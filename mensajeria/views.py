@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from mensajeria.form import CrearMensajeFormulario, BuscarMensajeFormulario
+from mensajeria.form import CrearMensajeFormulario
 from mensajeria.models import Mensaje
 from datetime import date
 
@@ -25,12 +25,8 @@ def crear_mensaje(request):
     return render(request, 'mensajeria/crear_mensaje.html', {'formulario': formulario})
 
 def listar_mensajes(request):
-    formulario = BuscarMensajeFormulario(request.GET)
-    listado_de_mensajes = ""
-    if formulario.is_valid():
-        mensaje_a_buscar = formulario.cleaned_data['autor']
-    listado_de_mensajes = Mensaje.objects.filter(autor__icontains=mensaje_a_buscar)
+    mensajes_recibidos = Mensaje.objects.filter(destinatario=request.user.username)
+    mensajes_enviados = Mensaje.objects.filter(autor=request.user.username)
     
-    formulario = BuscarMensajeFormulario()
-    return render(request, 'mensajeria/listar_mensajes.html', {'formulario': formulario, 'mensajes': listado_de_mensajes, 'busqueda': mensaje_a_buscar})
+    return render(request, 'mensajeria/listar_mensajes.html', {'mensajes_recibidos': mensajes_recibidos, 'mensajes_enviados': mensajes_enviados})
 

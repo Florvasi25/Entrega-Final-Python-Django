@@ -9,26 +9,31 @@
     {% if  request.user.is_authenticated%}
         <button><a href={% url 'mensajeria:crear_mensaje' %}>CREAR MENSAJE</a></button>
     {% endif %}
-    <form action="" method="get">
-        {{formulario}}
-        <button>Buscar</button>
-    </form>
-    {% if mensajes %}
+    {% if mensajes_recibidos %}
     <div class="cajas">
-        {% for mensaje in mensajes %}
+        <p>MENSAJES RECIBIDOS</p>
+        {% for mensaje in mensajes_recibidos %}
             <div class="cajas_mensajes">
                 <div>
-                    <li>{{mensaje.texto}}</li>
-                    <li>{{mensaje.autor}}</li>
-                    <li>{{mensaje.destinatario}}</li>
-                    <li>{{mensaje.fecha_creacion}}</li>
+                    <li>Mensaje: {{mensaje.texto}}</li>
+                    <li>De: {{mensaje.autor}}</li>
+                    <li>Fecha: {{mensaje.fecha_creacion}}</li>
                 </div>
             </div>
         {% endfor %}
     </div>
-    {% elif mensajes|length == 0 and busqueda == "" %}
-    <p>No hay mensajes creados</p>
-    {% else %}
-    <p>No se encontró "{{busqueda}}" en los datos cargados.</p>
     {% endif %}
-{% endblock contenido %}
+    {% if mensajes_enviados %}
+    <div class="cajas">
+        <p>MENSAJES ENVIADOS</p>
+        {% for mensaje in mensajes_enviados %}
+            <div class="cajas_mensajes">
+                <div>
+                    <li>Mensaje: {{mensaje.texto}}</li>
+                    <li>Para: {{mensaje.destinatario}}</li>
+                    <li>Fecha: {{mensaje.fecha_creacion}}</li>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}{% endblock contenido %}
