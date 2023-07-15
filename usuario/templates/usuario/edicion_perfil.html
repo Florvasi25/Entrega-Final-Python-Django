@@ -5,18 +5,27 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <div>
-        <h1 class="tituloh1">Editar perfil</h1>
-    </div>
-    <div>
-        <form action={% url 'usuario:editar_perfil' %} method='POST' enctype='multipart/form-data'>
-            {% csrf_token %}
-            <table>
-                {{formulario}}
-            </table>
-            <button>Guardar</button>
-            <button type='button'><a href={% url 'usuario:modificar_pass' %}>Cambiar Contraseña</a></button>
-        </form>
+    <div class='body_eliminar'>
+        <div>
+            <h1 class="tituloh1">Editar perfil</h1>
+        </div>
+        <div>
+            <form action={% url 'usuario:editar_perfil' %} method='POST' enctype='multipart/form-data'>
+                {% csrf_token %}
+                <table>
+                    {{formulario.as_p}}
+                </table>
+                <div class='form_botones'>
+                    <button class='producto_btn'>
+                        <a class="hipervinculo_productos">Guardar</a>
+                    </button>
+                    <button class='producto_btn' type='button' >
+                        <a class="hipervinculo_productos" href={% url 'usuario:modificar_pass' %}>Cambiar Contraseña</a>
+                    </button>
+    
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock contenido %}
 

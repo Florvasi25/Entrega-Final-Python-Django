@@ -30,6 +30,7 @@ def crear_mensaje(request):
 def listar_mensajes(request):
     mensajes_recibidos = Mensaje.objects.filter(destinatario=request.user.username)
     mensajes_enviados = Mensaje.objects.filter(autor=request.user.username)
+
     
     return render(request, 'mensajeria/listar_mensajes.html', {'mensajes_recibidos': mensajes_recibidos, 'mensajes_enviados': mensajes_enviados})
 

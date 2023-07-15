@@ -4,20 +4,20 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <div>
-        <h1 class="tituloh1">CREAR MENSAJE</h1>
-    </div>
-    <div>
-        {% comment %} <form action={% url 'inicio:crear_mensaje' %} method='POST' enctype="multipart/form-data"> {% endcomment %}
-        <form action={% url 'mensajeria:crear_mensaje' %} method='POST'>
-            {% csrf_token %}
-            <table>
-                {{formulario}}
-            </table>
-            
-            <button>Crear</button>
-        </form>
-        <button><a href={% url 'mensajeria:listar_mensajes' %}></a>LISTA MENSAJES</button>
+    <div class='body_mensajes'>
+        <div>
+            <h1>CREAR MENSAJE</h1>
+        </div>
+        <div>
+            <form action={% url 'mensajeria:crear_mensaje' %} method='POST'>
+                {% csrf_token %}
+                <table>
+                    {{formulario.as_p}}
+                </table>
+                <button class='producto_btn'>
+                    <a class='hipervinculo_productos'>Crear</a>
+                </button>
+            </form>
+        </div>
     </div>
 {% endblock contenido %}
-

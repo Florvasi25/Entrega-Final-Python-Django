@@ -5,17 +5,21 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <div>
-        <h1 class="tituloh1">REGISTRO</h1>
-    </div>
-    <div>
-        <form action={% url 'usuario:registrarse' %} method='POST'>
-            {% csrf_token %}
-            <table>
-                {{formulario}}
-            </table>
-            <button>Registrar</button>
-        </form>
+    <div class='body_eliminar'>
+        <div>
+            <h1 class="tituloh1">REGISTRO</h1>
+        </div>
+        <div class='caja_form'>
+            <form action={% url 'usuario:registrarse' %} method='POST'>
+                {% csrf_token %}
+                <table>
+                    {{formulario.as_p}}
+                </table>
+                <button class='producto_btn'>
+                    <a class='hipervinculo_productos'>Registrar</a>
+                </button>
+            </form>
+        </div>
     </div>
 {% endblock contenido %}
 

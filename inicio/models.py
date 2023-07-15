@@ -4,7 +4,7 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 class Producto(models.Model):
     nombre = models.CharField(max_length=20) 
-    modelo = models.CharField(max_length=20) 
+    modelo = models.CharField(max_length=20, null=True, blank=True) 
     precio = models.IntegerField()
     numero_telefono = models.IntegerField()
     descripcion = RichTextField(null=True, blank=True)

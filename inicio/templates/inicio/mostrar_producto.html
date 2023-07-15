@@ -13,8 +13,10 @@
                 <h1 class="tituloh1">{{producto.nombre}}</h1>
             </div>
             <div>
+                {% if producto.modelo %}
                 <li>Modelo: {{producto.modelo}}</li>
-                <li>Precio: ${{producto.precio}}</li>
+                {% endif %}
+                <li class='campo_msj'>${{producto.precio}}</li>
                 {% if producto.descripcion %}
                     <li>Descripción: {{producto.descripcion | safe}}</li>
                 {% endif %}
@@ -22,6 +24,7 @@
                 <li>Publicado el día: {{producto.fecha_creacion|date:'d/m/Y'}}</li>
                 {% if producto.autor %}
                     <li>Vendedor: {{producto.autor}}</li>
+                    <li>Usuario: {{user.username}}</li>
                 {% endif %}
             </div>
             <div class='mostrar'>

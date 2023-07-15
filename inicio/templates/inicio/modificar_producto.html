@@ -4,18 +4,20 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <div>
-        <h1 class="tituloh1">Modificar {{producto.nombre}}</h1>
-    </div>
-    <div>
-        <form action={% url 'inicio:modificar_producto' producto.id %} method='POST'>
-            {% csrf_token %}
-            <table>
-                {{form}}
-                {{form.media}}
-            </table>
-            <button>Modificar</button>
-        </form>
+    <div class='body_productos'>
+        <div>
+            <h1 class="tituloh1">Modificar {{producto.nombre}}</h1>
+        </div>
+        <div>
+            <form action={% url 'inicio:modificar_producto' producto.id %} method='POST'>
+                {% csrf_token %}
+                <table>
+                    {{form.as_p}}
+                    {{form.media}}
+                </table>
+                <button class='producto_btn'><a class="hipervinculo_productos">Modificar</a></button>
+            </form>
+        </div>
     </div>
 {% endblock contenido %}
 

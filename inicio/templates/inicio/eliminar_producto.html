@@ -4,16 +4,12 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <div>
+    <div class='body_eliminar'>
         <h1 class="tituloh1">ELIMINAR PRODUCTO</h1>
-    </div>
-    <div>
-        <form action={% url 'inicio:eliminar_producto' producto.id %} method='POST'>
-            {% csrf_token %}
-            <p>Quiere eliminar {{producto}}?</p>
-            
-            <button>Confirmar</button>
-        </form>
+        <form class='body_productos' action={% url 'inicio:eliminar_producto' producto.id %} method='POST'>
+        {% csrf_token %}
+        <h3>Desea eliminar "{{producto.nombre}}" de manera permanente?</h3>
+        <button class="producto_btn"><a class='hipervinculo_productos'>Confirmar</a></button>
     </div>
 {% endblock contenido %}
 

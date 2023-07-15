@@ -3,6 +3,16 @@ li {
     padding: 5px;
 }
 
+p {
+    margin: 0;
+    padding: 10px 0;
+    width: 100%;
+}
+
+h3 {
+    margin: 0px
+}
+
 .nav {
     background-color: rgb(42, 42, 42);
     height: 75px;
@@ -22,6 +32,19 @@ li {
     font-size: 20px;
 }
 
+.texto_mensaje{
+    margin-left: 20px;
+    font-size: 25px;
+}
+
+.texto_botones {
+    color: white;
+}
+
+.texto_bio {
+    width: 500px;
+}
+
 .nav_img {
     height: 40px;
     margin-right: 10px;
@@ -38,7 +61,7 @@ li {
 }
 
 .hipervinculo_paginas:hover {
-    color: yellow;
+    color: rgb(224, 224, 122);
 }
 
 .hipervinculo_productos {
@@ -47,7 +70,7 @@ li {
 }
 
 .hipervinculo_productos:hover {
-    color: yellow;
+    color: rgb(224, 224, 122);
 }
 
 .hipervinculo {
@@ -69,7 +92,7 @@ li {
 }
 
 .log_btn:hover {
-    background-color: yellow;
+    background-color: rgb(224, 224, 122);
 }
 
 .producto_btn {
@@ -77,6 +100,11 @@ li {
     background-color: rgb(42, 42, 42);
     border: solid 1px;
     border-radius: 5px;
+}
+
+.crear_msj_btn {
+    align-self: start;
+    margin-left: 30px;
 }
 
 .producto_info {
@@ -91,24 +119,54 @@ li {
 }
 
 .body{
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     margin: 0;
+    min-height: 100vh;
 }
 
 .body_productos {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+}
+
+.body_eliminar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+.body_mensajes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px;
 }
 
 .body_productos_ver {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    margin-top: 10vh;
+    max-height: 100vh;
+}
+
+.body_mensajes_ver {
+    display: flex;
+    margin-top: 10vh;
+    width: 100%;
+}
+
+.body_bio {
+    display: flex;
+    margin: 25px;
+}
+
+.img_bio {
+    align-self: center;
+    margin-right: 25px;
 }
 
 .no_productos {
@@ -116,11 +174,21 @@ li {
 }
 
 .body_inicio {
-    height: 200px;
-    background-color: yellow;
+    height: 350px;
+    background-color: rgb(224, 224, 122);
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
+    margin-top: 150px;
+    flex-direction: column;
+}
+
+.body_usuario_ver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    max-height: 100vh;
 }
 
 .cajas {
@@ -155,6 +223,42 @@ li {
     justify-content: center;
 }
 
+.caja_usuario_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cajas_memsajes {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.caja_mensaje {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mensaje {
+    width: 250px;
+    min-height: 200px;
+    max-height:250px;
+    border: solid 1px black;
+    margin: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.campo_msj {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
 .mostrar {
     margin-top: 30px;
 }
@@ -165,8 +269,15 @@ li {
     align-items: start  ;
 }
 
+.form_botones {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px
+}
+
 .footer{
     background-color: rgb(42, 42, 42);
     margin-top: auto;
     height: 50px;
 }
+

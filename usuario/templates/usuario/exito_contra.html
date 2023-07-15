@@ -5,11 +5,11 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <div>
+    <div class='body_eliminar'>
         <h1 class="tituloh1">Tu contraseña se cambió con éxito! :D</h1>
         <div>
-            <button><a href={% url 'usuario:editar_perfil' %}>VOLVER A MODIFICAR PERFIL</a></button>
-            <button><a href={% url 'inicio:inicio' %}>VOLVER AL INICIO</a></button>
+            <button class='producto_btn'><a class='hipervinculo_productos' href={% url 'usuario:editar_perfil' %}>VOLVER A MODIFICAR PERFIL</a></button>
+            <button class='producto_btn'><a class='hipervinculo_productos' href={% url 'inicio:inicio' %}>VOLVER AL INICIO</a></button>
         </div>
     </div>
 {% endblock contenido %}

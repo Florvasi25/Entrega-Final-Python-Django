@@ -5,17 +5,21 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <div>
-        <h1 class="tituloh1">LOGIN</h1>
-    </div>
-    <div>
-        <form action={% url 'usuario:login' %} method='POST'>
-            {% csrf_token %}
-            <table>
-                {{formulario}}
-            </table>
-            <button>Login</button>
-        </form>
+    <div class='body_eliminar'>
+        <div>
+            <h1 class="tituloh1">LOGIN</h1>
+        </div>
+        <div>
+            <form action={% url 'usuario:login' %} method='POST'>
+                {% csrf_token %}
+                <table>
+                    {{formulario.as_p}}
+                </table>
+                <button class='producto_btn'>
+                    <a class='hipervinculo_productos'>Login</a>
+                </button>
+            </form>
+        </div>
     </div>
 {% endblock contenido %}
 

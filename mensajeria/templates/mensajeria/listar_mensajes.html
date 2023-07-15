@@ -5,35 +5,45 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <h1>Listado Mensajes</h1>
-    {% if  request.user.is_authenticated%}
-        <button><a href={% url 'mensajeria:crear_mensaje' %}>CREAR MENSAJE</a></button>
-    {% endif %}
-    {% if mensajes_recibidos %}
-    <div class="cajas">
-        <p>MENSAJES RECIBIDOS</p>
-        {% for mensaje in mensajes_recibidos %}
-            <div class="cajas_mensajes">
-                <div>
-                    <li>Mensaje: {{mensaje.texto}}</li>
-                    <li>De: {{mensaje.autor}}</li>
-                    <li>Recibido: {{mensaje.fecha_creacion|date:'d/m/Y'}}</li>
+    <div class='body_mensajes'>
+        <h1>MENSAJES</h1>
+        {% if  request.user.is_authenticated%}
+        <div class='crear_msj_btn'>
+            <button class="producto_btn">
+                <a class='hipervinculo_productos' href={% url 'mensajeria:crear_mensaje' %}>CREAR MENSAJE</a>
+            </button>
+        </div>
+        {% endif %}
+        <div class='body_mensajes_ver'> 
+            {% if mensajes_recibidos %}
+            <div class="cajas_memsajes">
+                <p class='texto_mensaje'>MENSAJES RECIBIDOS</p>
+                <div class="caja_mensaje">
+                {% for mensaje in mensajes_recibidos %}
+                    <div class='mensaje'>
+                        <li class='campo_msj'>De: {{mensaje.autor}}</li>
+                        <li>{{mensaje.texto}}</li>
+                        <li class='campo_msj'>Recibido: {{mensaje.fecha_creacion|date:'d/m/Y'}}</li>
+                    </div>
+                {% endfor %}
                 </div>
             </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-    {% if mensajes_enviados %}
-    <div class="cajas">
-        <p>MENSAJES ENVIADOS</p>
-        {% for mensaje in mensajes_enviados %}
-            <div class="cajas_mensajes">
-                <div>
-                    <li>Mensaje: {{mensaje.texto}}</li>
-                    <li>Para: {{mensaje.destinatario}}</li>
-                    <li>Enviado: {{mensaje.fecha_creacion|date:'d/m/Y'}}</li>
-                </div>
+            {% endif %}
+            {% if mensajes_enviados %}
+            <div class="cajas_memsajes">
+                <p class='texto_mensaje'>MENSAJES ENVIADOS</p>
+                <div class="caja_mensaje">
+                {% for mensaje in mensajes_enviados %}
+                    <div class='mensaje'>
+                        <li class='campo_msj'>Para: {{mensaje.destinatario}}</li>
+                        <li>{{mensaje.texto}}</li>
+                        <li class='campo_msj'>Enviado: {{mensaje.fecha_creacion|date:'d/m/Y'}}</li>
+                    </div>
+                {% endfor %}
+                </div>    
             </div>
-        {% endfor %}
+            {% endif %}
+            </div>
+        </div>
     </div>
-    {% endif %}{% endblock contenido %}
+{% endblock contenido %}

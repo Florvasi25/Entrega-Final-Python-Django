@@ -4,18 +4,21 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <div>
-        <h1 class="tituloh1">CREAR PRODUCTO</h1>
-    </div>
-    <div>
-        <form action={% url 'inicio:crear_producto' %} method='POST' enctype="multipart/form-data">
-            {% csrf_token %}
-            <table>
-                {{formulario}}
-            </table>
-            
-            <button>Crear</button>
-        </form>
+    <div class='body_mensajes'>
+        <div>
+            <h1 class="tituloh1">CREAR PRODUCTO</h1>
+        </div>
+        <div>
+            <form action={% url 'inicio:crear_producto' %} method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    {{formulario.as_p}}
+                </table>
+                <button class='producto_btn'>
+                    <a class='hipervinculo_productos'>Crear</a>
+                </button>
+            </form>
+        </div>
     </div>
 {% endblock contenido %}
 
