@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block tab_title %}
-<title>Modificar Usuario</title>
+<title>Modificar {{producto.nombre}}</title>
 {% endblock tab_title %}
 
 {% block contenido %}
     <div>
-        <h1 class="tituloh1">MODIFICAR PRODUCTO</h1>
+        <h1 class="tituloh1">Modificar {{producto.nombre}}</h1>
     </div>
     <div>
         <form action={% url 'inicio:modificar_producto' producto.id %} method='POST'>

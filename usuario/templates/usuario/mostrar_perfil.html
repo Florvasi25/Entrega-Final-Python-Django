@@ -4,13 +4,14 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <div>
+<div class='body_productos_ver'>
+    <div class='caja_pruducto_img'>
         <h1 class="tituloh1">{{user.username}}</h1>
-    </div>
-    <div>
         {% if  request.user.infoextra.avatar%}
-            <img src={{request.user.infoextra.avatar.url}} alt="" height='40px'>
+            <img class='caja_pruducto_img' src={{request.user.infoextra.avatar.url}}>
         {% endif %}
+    </div>
+    <div class='caja_producto_info'>
         {% if user.first_name %}
             <li>Nombre: {{user.first_name}}</li>
         {% endif %}
@@ -24,10 +25,11 @@
         {% if request.user.infoextra.red_social %}
             <li>Red Social: {{request.user.infoextra.red_social}}</li>
         {% endif %}
+        <div class='mostrar'>
+            <button class='producto_btn'><a class='hipervinculo' href={% url 'usuario:editar_perfil' %}>MODIFICAR PERFIL</a></button>
+            <button class='producto_btn'><a class='hipervinculo' href={% url 'inicio:crear_producto' %}>CREAR PUBLICACIÓN</a></button>
+        </div>
     </div>
-    <div>
-        <button><a href={% url 'usuario:editar_perfil' %}>MODIFICAR PERFIL</a></button>
-        <button><a href={% url 'inicio:crear_producto' %}>CREAR PUBLICACIÓN</a></button>
-    </div>
+</div>
 {% endblock contenido %}
 

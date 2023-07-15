@@ -1,12 +1,10 @@
-.body{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
+li {
+    list-style: none;
+    padding: 5px;
 }
 
 .nav {
-    background-color: yellow;
+    background-color: rgb(42, 42, 42);
     height: 75px;
     display: flex;
     justify-content: space-around;
@@ -20,6 +18,8 @@
 
 .text_login {
     margin-right: 50px;
+    color: white;
+    font-size: 20px;
 }
 
 .nav_img {
@@ -27,13 +27,38 @@
     margin-right: 10px;
 }
 
+.img_producto_ver {
+    height: 250px;
+}
+
 .hipervinculo_paginas {
     margin: 20px;
     text-decoration: none;
+    color: white;
+}
+
+.hipervinculo_paginas:hover {
+    color: yellow;
+}
+
+.hipervinculo_productos {
+    text-decoration: none;
+    color: white;
+}
+
+.hipervinculo_productos:hover {
+    color: yellow;
 }
 
 .hipervinculo {
     text-decoration: none;
+    color: black;
+}
+
+.hiper_usuario {
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .log_btn {
@@ -43,24 +68,105 @@
     border-radius: 5px;
 }
 
-.footer{
+.log_btn:hover {
     background-color: yellow;
-    margin-top: auto;
-    height: 50px;
+}
+
+.producto_btn {
+    padding: 10px 15px;
+    background-color: rgb(42, 42, 42);
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.producto_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.producto_nombre {
+    font-size: 20px;
+    margin: 10px 5px 5px 5px;
+}
+
+.body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.body_productos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.body_productos_ver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.no_productos {
+    text-align: center;
+}
+
+.body_inicio {
+    height: 200px;
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
 }
 
 .cajas {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .cajas_productos {
     display: flex;
     flex-direction: column;
-    margin: 30px;
+    margin: 20px;
     border: solid 1px;
     padding: 10px;
     border-radius: 10px;
     align-items: center;
+    background-color: white;
+    min-width: 200px;
+    max-width: 270px;
+}
+
+.caja_pruducto_img {
+    margin-right: 50px;
+    height: 250px;
+}
+
+.caja_producto_info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.mostrar {
+    margin-top: 30px;
+}
+
+.form_productos {
+    margin: 20px;
+    display: flex;
+    align-items: start  ;
+}
+
+.footer{
+    background-color: rgb(42, 42, 42);
+    margin-top: auto;
+    height: 50px;
 }

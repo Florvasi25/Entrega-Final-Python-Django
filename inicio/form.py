@@ -1,8 +1,8 @@
 from django import forms
 
 class CrearProductoFormulario(forms.Form):
-    nombre = forms.CharField(max_length=20) 
-    modelo = forms.CharField(max_length=20) 
+    nombre = forms.CharField(max_length=50) 
+    modelo = forms.CharField(max_length=50) 
     precio = forms.IntegerField()
     numero_telefono = forms.IntegerField(label='Número de Contacto')
     imagen = forms.ImageField()

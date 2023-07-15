@@ -1,24 +1,37 @@
 {% extends 'base.html' %}
 {% block tab_title %}
-<title>Producto</title>
+<title>Ver: {{producto.nombre}}</title>
 {% endblock tab_title %}
 
 {% block contenido %}
-    <div>
-        <h1 class="tituloh1">{{producto.nombre}}</h1>
-    </div>
-    <div>
-        <img src={{producto.imagen.url}} alt="" height='100px'>
-        <li>Modelo: {{producto.modelo}}</li>
-        <li>Precio: ${{producto.precio}}</li>
-        <li>Número de Contacto: {{producto.numero_telefono}}</li>
-        {% if producto.descripcion %}
-            <li>Descripción: {{producto.descripcion | safe}}</li>
-        {% endif %}
-        <li>Publicado el día: {{producto.fecha_creacion|date:'d/m/Y'}}</li>
-        {% if producto.autor %}
-            <li>Vendedor: {{producto.autor}}</li>
-        {% endif %}
+    <div class='body_productos_ver'>
+        <div class='caja_pruducto_img'>
+            <img class='img_producto_ver' src={{producto.imagen.url}}>
+        </div>
+        <div>
+            <div>
+                <h1 class="tituloh1">{{producto.nombre}}</h1>
+            </div>
+            <div>
+                <li>Modelo: {{producto.modelo}}</li>
+                <li>Precio: ${{producto.precio}}</li>
+                {% if producto.descripcion %}
+                    <li>Descripción: {{producto.descripcion | safe}}</li>
+                {% endif %}
+                <li>Número de Contacto: {{producto.numero_telefono}}</li>
+                <li>Publicado el día: {{producto.fecha_creacion|date:'d/m/Y'}}</li>
+                {% if producto.autor %}
+                    <li>Vendedor: {{producto.autor}}</li>
+                {% endif %}
+            </div>
+            <div class='mostrar'>
+                {% if request.user.is_authenticated %}
+                    <button class='producto_btn'>
+                        <a class='hipervinculo_productos' href={% url 'inicio:modificar_producto' producto.id %}>Modificar</a>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock contenido %}
 

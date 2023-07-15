@@ -5,42 +5,47 @@
 {% endblock tab_title %}
 
 {% block contenido %}
-    <h1>Listado Productos</h1>
-    {% if  request.user.is_authenticated%}
-        <button><a href={% url 'inicio:crear_producto' %}>CREAR PUBLICACIÓN</a></button>
-    {% endif %}
-    <form action="" method="get">
-        {{formulario}}
-        <button>Buscar</button>
-    </form>
-    {% if productos %}
-    <div class="cajas">
-        {% for producto in productos %}
-            <div class="cajas_productos">
-                <div >
-                    <img src={{producto.imagen.url}} alt="" height='100px'>
-                    <p>{{producto.nombre}}</p>
-                    <p>{{producto.precio}}</p>
-                </div>
-                <div>
-                    <button>
-                        <a href={% url 'inicio:mostrar_producto' producto.id %}>Ver más</a>
-                    </button>
-                    {% if request.user.is_authenticated %}
-                        <button>
-                            <a href={% url 'inicio:eliminar_producto' producto.id %}>Eliminar</a>
+    <div class='body_productos'>
+        <div class='form_productos'>
+            <form action="" method="get">
+                {{formulario}}
+                <button class='log_btn'>Buscar</button>
+            </form>
+        </div>
+        <div>
+            {% if  request.user.is_authenticated%}
+                <button class='producto_btn'><a class='hipervinculo_productos' href={% url 'inicio:crear_producto' %}>CREAR PUBLICACIÓN</a></button>
+            {% endif %}
+        </div>
+        {% if productos %}
+        <div class="cajas">
+            {% for producto in productos %}
+                <div class="cajas_productos">
+                    <div class='producto_info'>
+                        <img src={{producto.imagen.url}} alt="" height='200px'>
+                        <p class='producto_nombre'>{{producto.nombre}}</p>
+                        <p class='producto_modelo'>${{producto.precio}}</p>
+                    </div>
+                    <div>
+                        <button class='producto_btn'>
+                            <a class='hipervinculo_productos' href={% url 'inicio:mostrar_producto' producto.id %}>Ver más</a>
                         </button>
-                        <button>
-                            <a href={% url 'inicio:modificar_producto' producto.id %}>Modificar</a>
-                        </button>
-                    {% endif %}
+                        {% if request.user.is_authenticated %}
+                            <button class='producto_btn'>
+                                <a class='hipervinculo_productos' href={% url 'inicio:eliminar_producto' producto.id %}>Eliminar</a>
+                            </button>
+                            <button class='producto_btn'>
+                                <a class='hipervinculo_productos' href={% url 'inicio:modificar_producto' producto.id %}>Modificar</a>
+                            </button>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+            {% elif productos|length == 0 and busqueda == "" %}
+                <p class='no_productos'>No hay productos creados</p>
+            {% else %}
+                <p class='no_productos'>No se encontró "{{busqueda}}" en los datos cargados.</p>
+            {% endif %}    
+                </div>
     </div>
-    {% elif productos|length == 0 and busqueda == "" %}
-    <p>No hay productos creados</p>
-    {% else %}
-    <p>No se encontró "{{busqueda}}" en los datos cargados.</p>
-    {% endif %}
 {% endblock contenido %}

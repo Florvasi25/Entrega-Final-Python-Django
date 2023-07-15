@@ -17,7 +17,7 @@
                 <div>
                     <li>Mensaje: {{mensaje.texto}}</li>
                     <li>De: {{mensaje.autor}}</li>
-                    <li>Fecha: {{mensaje.fecha_creacion}}</li>
+                    <li>Recibido: {{mensaje.fecha_creacion|date:'d/m/Y'}}</li>
                 </div>
             </div>
         {% endfor %}
@@ -31,7 +31,7 @@
                 <div>
                     <li>Mensaje: {{mensaje.texto}}</li>
                     <li>Para: {{mensaje.destinatario}}</li>
-                    <li>Fecha: {{mensaje.fecha_creacion}}</li>
+                    <li>Enviado: {{mensaje.fecha_creacion|date:'d/m/Y'}}</li>
                 </div>
             </div>
         {% endfor %}

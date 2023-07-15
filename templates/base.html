@@ -15,7 +15,9 @@
                 <a class='hipervinculo_paginas' href={% url 'inicio:inicio' %}>INICIO</a>
                 <a class='hipervinculo_paginas' href={% url 'inicio:listar_productos' %}>CATÁLOGO</a>
                 <a class='hipervinculo_paginas' href={% url 'inicio:acerca_de' %}>SOBRE MÍ</a>
-                <a class='hipervinculo_paginas' href={% url 'mensajeria:listar_mensajes' %}>MENSAJES</a>
+                {% if request.user.is_authenticated %}
+                    <a class='hipervinculo_paginas' href={% url 'mensajeria:listar_mensajes' %}>MENSAJES</a>
+                {% endif %}
             </div>
             <div class="nav_log">
                 <div class='nav_log_in'>
@@ -25,9 +27,9 @@
                         {% else %}
                             <img class='nav_img' src={% static 'assets/no_profile_pic.png' %}>
                         {% endif %}
-                        <p class='text_login'>¡Hola, <a class='hipervinculo' href={% url 'usuario:mostrar_perfil' %}>{{request.user.username}}</a>!</p>
+                        <p class='text_login'>¡Hola, <a class='hipervinculo hiper_usuario' href={% url 'usuario:mostrar_perfil' %}>{{request.user.username}}</a>!</p>
                         <button class='log_btn'>
-                            <a href={% url 'usuario:logout' %}>LOGOUT</a>
+                            <a class='hipervinculo' href={% url 'usuario:logout' %}>LOGOUT</a>
                         </button>
                     {% else %}
                 </div>
@@ -42,10 +44,8 @@
                 {% endif %}
             </div>
         </nav>
-        <div>
-            {% block contenido %}
-            {% endblock contenido %}
-        </div>
+        {% block contenido %}
+        {% endblock contenido %}
         <footer class='footer'>
             <div>
             </div>

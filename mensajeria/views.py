@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from mensajeria.form import CrearMensajeFormulario
 from mensajeria.models import Mensaje
+from django.contrib.auth.decorators import login_required
 from datetime import date
 
 # Create your views here.
 
+@login_required
 def crear_mensaje(request):
     if request.method == 'POST':
         formulario = CrearMensajeFormulario(request.POST, request.FILES)
@@ -24,6 +26,7 @@ def crear_mensaje(request):
     formulario = CrearMensajeFormulario()
     return render(request, 'mensajeria/crear_mensaje.html', {'formulario': formulario})
 
+@login_required
 def listar_mensajes(request):
     mensajes_recibidos = Mensaje.objects.filter(destinatario=request.user.username)
     mensajes_enviados = Mensaje.objects.filter(autor=request.user.username)
