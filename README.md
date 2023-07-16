@@ -42,4 +42,8 @@ En la página de mensajería se pueden enviar mensajes a otros usuarios solicit�
 ### COMENTARIOS
 Un usuario que no está loggeado puede ingresar solo a ciertas páginas. Si este supiera la dirección html le va a pedir que se loggee para continuar.
 
+---
+### VIDEO DEMOSTRATIVO
+https://drive.google.com/file/d/14RcCp5HTt9OQp-6bjBUuvlVS1T0xamUT/view?usp=sharing
+
 
