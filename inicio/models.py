@@ -8,9 +8,10 @@ class Producto(models.Model):
     precio = models.IntegerField()
     numero_telefono = models.IntegerField()
     descripcion = RichTextField(null=True, blank=True)
-    autor = models.EmailField()
+    email_vendedor = models.EmailField()
     imagen = models.ImageField(upload_to='productos', null=True, blank=True)
     fecha_creacion = models.DateField()
+    usuario_vendedor = models.CharField(max_length=20)
     
 
 

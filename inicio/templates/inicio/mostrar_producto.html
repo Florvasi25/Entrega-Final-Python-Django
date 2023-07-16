@@ -6,7 +6,9 @@
 {% block contenido %}
     <div class='body_productos_ver'>
         <div class='caja_pruducto_img'>
+            {% if producto.imagen %}
             <img class='img_producto_ver' src={{producto.imagen.url}}>
+            {% endif %}
         </div>
         <div>
             <div>
@@ -22,9 +24,9 @@
                 {% endif %}
                 <li>Número de Contacto: {{producto.numero_telefono}}</li>
                 <li>Publicado el día: {{producto.fecha_creacion|date:'d/m/Y'}}</li>
-                {% if producto.autor %}
-                    <li>Vendedor: {{producto.autor}}</li>
-                    <li>Usuario: {{user.username}}</li>
+                {% if producto.email_vendedor %}
+                    <li>Email del Vendedor: {{producto.email_vendedor}}</li>
+                    <li>Usuario del Vendedor: {{producto.usuario_vendedor}}</li>
                 {% endif %}
             </div>
             <div class='mostrar'>

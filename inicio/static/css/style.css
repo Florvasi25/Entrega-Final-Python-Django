@@ -6,7 +6,6 @@ li {
 p {
     margin: 0;
     padding: 10px 0;
-    width: 100%;
 }
 
 h3 {
@@ -51,7 +50,7 @@ h3 {
 }
 
 .img_producto_ver {
-    height: 250px;
+    height: 500px;
 }
 
 .hipervinculo_paginas {
@@ -105,6 +104,11 @@ h3 {
 .crear_msj_btn {
     align-self: start;
     margin-left: 30px;
+}
+
+.img_listado {
+    height: auto;
+    max-width: 230px;
 }
 
 .producto_info {
@@ -209,6 +213,7 @@ h3 {
     background-color: white;
     min-width: 200px;
     max-width: 270px;
+    justify-content: center;
 }
 
 .caja_pruducto_img {

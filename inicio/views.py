@@ -28,10 +28,12 @@ def crear_producto(request):
                 nombre=info['nombre'],
                 modelo=info['modelo'],
                 precio=info['precio'],
+                descripcion=info['descripcion'],
                 numero_telefono=info['numero_telefono'],
-                autor=request.user.email,
+                email_vendedor=request.user.email,
                 imagen=info['imagen'],
-                fecha_creacion=date.today()
+                fecha_creacion=date.today(),
+                usuario_vendedor=request.user.username
             )
             producto.save()
             return redirect('inicio:listar_productos')

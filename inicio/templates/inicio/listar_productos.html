@@ -22,7 +22,9 @@
             {% for producto in productos %}
                 <div class="cajas_productos">
                     <div class='producto_info'>
-                        <img src={{producto.imagen.url}} alt="" height='200px'>
+                        {% if producto.imagen %}
+                        <img class='img_listado' src={{producto.imagen.url}} alt="">
+                        {% endif %}
                         <p class='producto_nombre'>{{producto.nombre}}</p>
                         <p class='producto_modelo'>${{producto.precio}}</p>
                     </div>
